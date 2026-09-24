@@ -141,7 +141,7 @@ class PKGDownApp(ctk.CTk):
                     else:
                         upload_date = "Unknown"
                     
-                    download_url = f"https://{server}{dir_path}/{fname}"
+                    download_url = f"https://archive.org/download/{identifier}/{fname}"
                     
                     # Send to UI
                     self.after(0, self.add_file_to_ui, identifier, fname, fsize, upload_date, download_url)
