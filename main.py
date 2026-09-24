@@ -59,8 +59,69 @@ class PKGDownApp(ctk.CTk):
                 self.history_opt.configure(values=self.search_history)
                 self.save_history()
             print(f"Searching for: {query}")
-            # To be implemented: Archive.org API logic
             
+            # Clear previous results
+            for widget in self.results_frame.winfo_children():
+                widget.destroy()
+                
+            self.search_btn.configure(state="disabled")
+            
+            # Start background thread
+            import threading
+            threading.Thread(target=self.perform_search, args=(query,), daemon=True).start()
+
+    def perform_search(self, query):
+        import requests
+        import datetime
+        try:
+            # 1. Search for items
+            url = f"https://archive.org/advancedsearch.php?q={query}&output=json&rows=5"
+            response = requests.get(url, timeout=10)
+            data = response.json()
+            docs = data.get("response", {}).get("docs", [])
+            
+            for doc in docs:
+                identifier = doc.get("identifier")
+                if not identifier:
+                    continue
+                
+                # 2. Fetch item metadata for files
+                meta_url = f"https://archive.org/metadata/{identifier}"
+                meta_resp = requests.get(meta_url, timeout=10)
+                meta_data = meta_resp.json()
+                
+                files = meta_data.get("files", [])
+                server = meta_data.get("server")
+                dir_path = meta_data.get("dir")
+                
+                for f in files:
+                    # Filter out metadata files if needed, here just basic files
+                    fname = f.get("name")
+                    if not fname: continue
+                    fsize = f.get("size", "0")
+                    fmtime = f.get("mtime", "")
+                    if fmtime:
+                        try:
+                            # Convert epoch to readable date
+                            upload_date = datetime.datetime.fromtimestamp(int(fmtime)).strftime('%Y-%m-%d %H:%M')
+                        except:
+                            upload_date = "Unknown"
+                    else:
+                        upload_date = "Unknown"
+                    
+                    download_url = f"https://{server}{dir_path}/{fname}"
+                    
+                    # Send to UI
+                    self.after(0, self.add_file_to_ui, identifier, fname, fsize, upload_date, download_url)
+        except Exception as e:
+            print("Search error:", e)
+        finally:
+            self.after(0, lambda: self.search_btn.configure(state="normal"))
+
+    def add_file_to_ui(self, identifier, fname, fsize, upload_date, download_url):
+        # Stub for UI integration task
+        pass
+        
     def on_history_select(self, choice):
         if choice and choice != "No History":
             self.search_entry.delete(0, 'end')
