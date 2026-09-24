@@ -119,8 +119,65 @@ class PKGDownApp(ctk.CTk):
             self.after(0, lambda: self.search_btn.configure(state="normal"))
 
     def add_file_to_ui(self, identifier, fname, fsize, upload_date, download_url):
-        # Stub for UI integration task
+        # We will build the full UI item in Task 5
         pass
+
+    def start_download(self, url, fname, progress_bar, status_label, download_btn, delete_btn):
+        import threading
+        threading.Thread(target=self._download_thread, args=(url, fname, progress_bar, status_label, download_btn, delete_btn), daemon=True).start()
+
+    def _download_thread(self, url, fname, progress_bar, status_label, download_btn, delete_btn):
+        import requests
+        dest_path = os.path.join(self.download_dir.get(), fname)
+        
+        try:
+            self.after(0, lambda: [
+                download_btn.configure(state="disabled"),
+                status_label.configure(text="Downloading..."),
+                progress_bar.set(0)
+            ])
+            
+            with requests.get(url, stream=True, timeout=10) as r:
+                r.raise_for_status()
+                total_length = int(r.headers.get('content-length', 0))
+                downloaded = 0
+                
+                with open(dest_path, 'wb') as f:
+                    for chunk in r.iter_content(chunk_size=8192):
+                        if chunk:
+                            f.write(chunk)
+                            downloaded += len(chunk)
+                            if total_length > 0:
+                                progress = downloaded / total_length
+                                self.after(0, progress_bar.set, progress)
+            
+            self.after(0, lambda: [
+                status_label.configure(text="Downloaded"),
+                download_btn.pack_forget(),
+                delete_btn.pack(side="right", padx=5)
+            ])
+            
+        except Exception as e:
+            print("Download error:", e)
+            self.after(0, lambda: [
+                status_label.configure(text="Error"),
+                download_btn.configure(state="normal")
+            ])
+
+    def delete_file(self, fname, status_label, download_btn, delete_btn, progress_bar):
+        dest_path = os.path.join(self.download_dir.get(), fname)
+        if os.path.exists(dest_path):
+            try:
+                os.remove(dest_path)
+            except Exception as e:
+                print("Delete error:", e)
+                return
+        
+        status_label.configure(text="")
+        progress_bar.set(0)
+        delete_btn.pack_forget()
+        download_btn.configure(state="normal")
+        download_btn.pack(side="right", padx=5)
         
     def on_history_select(self, choice):
         if choice and choice != "No History":
