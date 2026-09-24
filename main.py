@@ -122,22 +122,30 @@ class PKGDownApp(ctk.CTk):
             ext_filter = '.' + ext_filter
             
         def fetch_metadata(identifier):
+            import time
+            start = time.time()
             meta_url = f"https://archive.org/metadata/{identifier}"
             try:
                 meta_resp = requests.get(meta_url, timeout=60)
+                elapsed = time.time() - start
+                logging.info(f"Fetched metadata for {identifier} in {elapsed:.2f}s")
                 return identifier, meta_resp.json()
             except Exception as e:
-                logging.error(f"Meta fetch error for {identifier}: {e}")
+                elapsed = time.time() - start
+                logging.error(f"Meta fetch error for {identifier} after {elapsed:.2f}s: {e}")
                 return identifier, {}
                 
         try:
             # 1. Search for items (Fetch up to 1000 items to get many more files)
             url = f"https://archive.org/advancedsearch.php?q={query}&output=json&rows=1000&page={page}"
             logging.info(f"Fetching search results from: {url}")
+            import time
+            main_start = time.time()
             response = requests.get(url, timeout=60)
+            main_elapsed = time.time() - main_start
             data = response.json()
             docs = data.get("response", {}).get("docs", [])
-            logging.info(f"Found {len(docs)} items for query '{query}'. Starting metadata fetch...")
+            logging.info(f"Found {len(docs)} items for query '{query}' in {main_elapsed:.2f}s. Starting metadata fetch...")
             
             with ThreadPoolExecutor(max_workers=5) as executor:
                 futures = []
