@@ -104,8 +104,8 @@ class PKGDownApp(ctk.CTk):
         if ext_filter and not ext_filter.startswith('.'):
             ext_filter = '.' + ext_filter
         try:
-            # 1. Search for items
-            url = f"https://archive.org/advancedsearch.php?q={query}&output=json&rows=5"
+            # 1. Search for items (Fetch up to 1000 items to get many more files)
+            url = f"https://archive.org/advancedsearch.php?q={query}&output=json&rows=1000"
             response = requests.get(url, timeout=10)
             data = response.json()
             docs = data.get("response", {}).get("docs", [])
