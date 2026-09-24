@@ -19,6 +19,9 @@ class PKGDownApp(ctk.CTk):
         
         self.download_dir = ctk.StringVar(value=os.path.join(os.path.expanduser("~"), "Downloads"))
         self.search_history = []
+        self.current_page = 1
+        self.current_query = ""
+        self.next_page_btn = None
         
         # Download Queue
         self.download_queue = queue.Queue()
@@ -87,17 +90,21 @@ class PKGDownApp(ctk.CTk):
                 self.save_history()
             print(f"Searching for: {query}")
             
+            self.current_page = 1
+            self.current_query = query
+            
             # Clear previous results
             for widget in self.results_frame.winfo_children():
                 widget.destroy()
+            self.next_page_btn = None
                 
             self.search_btn.configure(state="disabled")
             
             # Start background thread
             import threading
-            threading.Thread(target=self.perform_search, args=(query,), daemon=True).start()
+            threading.Thread(target=self.perform_search, args=(query, 1), daemon=True).start()
 
-    def perform_search(self, query):
+    def perform_search(self, query, page=1):
         import requests
         import datetime
         ext_filter = self.ext_entry.get().strip().lower()
@@ -105,7 +112,7 @@ class PKGDownApp(ctk.CTk):
             ext_filter = '.' + ext_filter
         try:
             # 1. Search for items (Fetch up to 1000 items to get many more files)
-            url = f"https://archive.org/advancedsearch.php?q={query}&output=json&rows=1000"
+            url = f"https://archive.org/advancedsearch.php?q={query}&output=json&rows=1000&page={page}"
             response = requests.get(url, timeout=10)
             data = response.json()
             docs = data.get("response", {}).get("docs", [])
@@ -149,13 +156,38 @@ class PKGDownApp(ctk.CTk):
             print("Search error:", e)
         finally:
             self.after(0, lambda: self.search_btn.configure(state="normal"))
+            if 'docs' in locals() and len(docs) == 1000:
+                self.after(0, self.add_next_page_button)
+
+    def add_next_page_button(self):
+        if self.next_page_btn is not None and self.next_page_btn.winfo_exists():
+            self.next_page_btn.destroy()
+            
+        self.next_page_btn = ctk.CTkButton(self.results_frame, text="Load Next 1000 Results", command=self.load_next_page)
+        self.next_page_btn.pack(pady=20)
+        
+    def load_next_page(self):
+        self.current_page += 1
+        self.next_page_btn.configure(text="Loading...", state="disabled")
+        import threading
+        threading.Thread(target=self.perform_search, args=(self.current_query, self.current_page), daemon=True).start()
 
     def add_file_to_ui(self, identifier, fname, fsize, upload_date, download_url):
         idx = len(self.results_frame.winfo_children()) + 1
-        
+        if self.next_page_btn is not None and self.next_page_btn.winfo_exists():
+            # don't count the next page button in index
+            idx -= 1
+            
         # Frame for each item
         item_frame = ctk.CTkFrame(self.results_frame)
-        item_frame.pack(fill="x", padx=5, pady=5)
+        
+        # Keep next page button at the bottom
+        if self.next_page_btn is not None and self.next_page_btn.winfo_exists():
+            self.next_page_btn.pack_forget()
+            item_frame.pack(fill="x", padx=5, pady=5)
+            self.next_page_btn.pack(pady=20)
+        else:
+            item_frame.pack(fill="x", padx=5, pady=5)
         
         # Info frame
         info_frame = ctk.CTkFrame(item_frame, fg_color="transparent")
