@@ -1,4 +1,13 @@
 import customtkinter as ctk
+import logging
+
+logging.basicConfig(
+    filename='pkg_down.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logging.info("Application started.")
+
 import os
 import json
 import time
@@ -88,7 +97,7 @@ class PKGDownApp(ctk.CTk):
                 self.search_history = self.search_history[:10]
                 self.history_opt.configure(values=self.search_history)
                 self.save_history()
-            print(f"Searching for: {query}")
+            logging.info(f"Searching for: {query}")
             
             self.current_page = 1
             self.current_query = query
@@ -118,15 +127,17 @@ class PKGDownApp(ctk.CTk):
                 meta_resp = requests.get(meta_url, timeout=60)
                 return identifier, meta_resp.json()
             except Exception as e:
-                print(f"Meta fetch error for {identifier}: {e}")
+                logging.error(f"Meta fetch error for {identifier}: {e}")
                 return identifier, {}
                 
         try:
             # 1. Search for items (Fetch up to 1000 items to get many more files)
             url = f"https://archive.org/advancedsearch.php?q={query}&output=json&rows=1000&page={page}"
+            logging.info(f"Fetching search results from: {url}")
             response = requests.get(url, timeout=60)
             data = response.json()
             docs = data.get("response", {}).get("docs", [])
+            logging.info(f"Found {len(docs)} items for query '{query}'. Starting metadata fetch...")
             
             with ThreadPoolExecutor(max_workers=5) as executor:
                 futures = []
@@ -159,7 +170,7 @@ class PKGDownApp(ctk.CTk):
                         # Send to UI
                         self.after(0, self.add_file_to_ui, identifier, fname, fsize, upload_date, download_url)
         except Exception as e:
-            print("Search error:", e)
+            logging.error(f"Search error: {e}")
         finally:
             self.after(0, lambda: self.search_btn.configure(state="normal"))
             if 'docs' in locals() and len(docs) == 1000:
@@ -298,7 +309,7 @@ class PKGDownApp(ctk.CTk):
                 ])
                 
             except Exception as e:
-                print("Download error:", e)
+                logging.error(f"Download error for {fname}: {e}")
                 self.after(0, lambda sl=status_label, db=download_btn: [
                     sl.configure(text="Error"),
                     db.configure(state="normal", text="Download")
