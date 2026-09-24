@@ -115,19 +115,20 @@ class PKGDownApp(ctk.CTk):
         def fetch_metadata(identifier):
             meta_url = f"https://archive.org/metadata/{identifier}"
             try:
-                meta_resp = requests.get(meta_url, timeout=10)
+                meta_resp = requests.get(meta_url, timeout=30)
                 return identifier, meta_resp.json()
-            except:
+            except Exception as e:
+                print(f"Meta fetch error for {identifier}: {e}")
                 return identifier, {}
                 
         try:
             # 1. Search for items (Fetch up to 1000 items to get many more files)
             url = f"https://archive.org/advancedsearch.php?q={query}&output=json&rows=1000&page={page}"
-            response = requests.get(url, timeout=10)
+            response = requests.get(url, timeout=30)
             data = response.json()
             docs = data.get("response", {}).get("docs", [])
             
-            with ThreadPoolExecutor(max_workers=20) as executor:
+            with ThreadPoolExecutor(max_workers=5) as executor:
                 futures = []
                 for doc in docs:
                     identifier = doc.get("identifier")
