@@ -119,8 +119,42 @@ class PKGDownApp(ctk.CTk):
             self.after(0, lambda: self.search_btn.configure(state="normal"))
 
     def add_file_to_ui(self, identifier, fname, fsize, upload_date, download_url):
-        # We will build the full UI item in Task 5
-        pass
+        idx = len(self.results_frame.winfo_children()) + 1
+        
+        # Frame for each item
+        item_frame = ctk.CTkFrame(self.results_frame)
+        item_frame.pack(fill="x", padx=5, pady=5)
+        
+        # Info label
+        info_text = f"[{idx}] - {fname} - {fsize} bytes - {upload_date}"
+        info_label = ctk.CTkLabel(item_frame, text=info_text, anchor="w")
+        info_label.pack(side="left", padx=10, fill="x", expand=True)
+        
+        # Progress bar
+        progress_bar = ctk.CTkProgressBar(item_frame, width=150)
+        progress_bar.set(0)
+        progress_bar.pack(side="left", padx=10)
+        
+        # Status label
+        status_label = ctk.CTkLabel(item_frame, text="", width=80)
+        status_label.pack(side="left", padx=5)
+        
+        # Buttons
+        download_btn = ctk.CTkButton(item_frame, text="Download", width=80)
+        delete_btn = ctk.CTkButton(item_frame, text="Delete", width=80, fg_color="red", hover_color="darkred")
+        
+        # Wire commands
+        download_btn.configure(command=lambda: self.start_download(download_url, fname, progress_bar, status_label, download_btn, delete_btn))
+        delete_btn.configure(command=lambda: self.delete_file(fname, status_label, download_btn, delete_btn, progress_bar))
+        
+        # Check if already downloaded
+        dest_path = os.path.join(self.download_dir.get(), fname)
+        if os.path.exists(dest_path):
+            status_label.configure(text="Downloaded")
+            progress_bar.set(1)
+            delete_btn.pack(side="right", padx=5)
+        else:
+            download_btn.pack(side="right", padx=5)
 
     def start_download(self, url, fname, progress_bar, status_label, download_btn, delete_btn):
         import threading
