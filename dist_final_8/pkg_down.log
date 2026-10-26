@@ -1,0 +1,78 @@
+2026-09-24 04:22:00,661 - INFO - Application started.
+2026-09-24 04:24:09,198 - INFO - Application started.
+2026-09-24 04:28:00,712 - INFO - Application started.
+2026-09-24 04:28:20,517 - INFO - Searching for 'PS4 fpkg collection' with extension filter 'pkg'
+2026-09-24 04:28:21,067 - WARNING - Archive.org rejected cursor pagination ([UNSUPPORTED_VALUE] A requested parameter has an inappropriate value * for request parameter cursorMark); falling back to numbered pages.
+2026-09-24 04:28:47,164 - INFO - Complete — 965 individual files from 35 Archive.org items across 1 search pages.
+2026-09-24 04:59:58,759 - ERROR - Download error for ps4-fpkg-collection-english-c/Carrion - [EU] [EN] [1.04].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn721708.ca.archive.org/0/items/ps4-fpkg-collection-english-c/Carrion%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.04%5D.pkg
+2026-09-24 04:59:58,765 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn721708.ca.archive.org/0/items/ps4-fpkg-collection-english-c/Carrion%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.04%5D.pkg
+2026-09-24 05:00:58,687 - ERROR - Download error for ps4-fpkg-collection-english-c/CRISIS CORE FINAL FANTASY VII - [EU] [EN] [1.04].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn760101.eu.archive.org/0/items/ps4-fpkg-collection-english-c/CRISIS%20CORE%20FINAL%20FANTASY%20VII%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.04%5D.pkg
+2026-09-24 05:00:58,692 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn760101.eu.archive.org/0/items/ps4-fpkg-collection-english-c/CRISIS%20CORE%20FINAL%20FANTASY%20VII%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.04%5D.pkg
+2026-09-24 05:01:52,085 - ERROR - Download error for ps4-fpkg-collection-english-c/Crow Country - [EU] [EN] [1.00].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn721708.ca.archive.org/0/items/ps4-fpkg-collection-english-c/Crow%20Country%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.00%5D.pkg
+2026-09-24 05:01:52,148 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn721708.ca.archive.org/0/items/ps4-fpkg-collection-english-c/Crow%20Country%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.00%5D.pkg
+2026-09-24 05:02:45,335 - ERROR - Download error for ps4-fpkg-collection-english-c/Crysis - [EU] [EN] [1.03].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn721708.ca.archive.org/0/items/ps4-fpkg-collection-english-c/Crysis%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.03%5D.pkg
+2026-09-24 05:02:45,350 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn721708.ca.archive.org/0/items/ps4-fpkg-collection-english-c/Crysis%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.03%5D.pkg
+2026-09-24 05:03:44,098 - ERROR - Download error for ps4-fpkg-collection-english-c/Cult of the Lamb - [EU] [EN] [1.29].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn760101.eu.archive.org/0/items/ps4-fpkg-collection-english-c/Cult%20of%20the%20Lamb%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.29%5D.pkg
+2026-09-24 05:03:44,145 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn760101.eu.archive.org/0/items/ps4-fpkg-collection-english-c/Cult%20of%20the%20Lamb%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.29%5D.pkg
+2026-09-24 05:04:41,638 - ERROR - Download error for ps4-fpkg-collection-english-c/Cuphead - [US] [EN] [1.05].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn760101.eu.archive.org/0/items/ps4-fpkg-collection-english-c/Cuphead%20-%20%5BUS%5D%20%5BEN%5D%20%5B1.05%5D.pkg
+2026-09-24 05:04:41,665 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn760101.eu.archive.org/0/items/ps4-fpkg-collection-english-c/Cuphead%20-%20%5BUS%5D%20%5BEN%5D%20%5B1.05%5D.pkg
+2026-09-24 05:05:37,921 - ERROR - Download error for ps4-fpkg-collection-english-d/Darkwood - [US] [EN] [1.06].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/Darkwood%20-%20%5BUS%5D%20%5BEN%5D%20%5B1.06%5D.pkg
+2026-09-24 05:05:37,937 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/Darkwood%20-%20%5BUS%5D%20%5BEN%5D%20%5B1.06%5D.pkg
+2026-09-24 05:06:30,936 - ERROR - Download error for ps4-fpkg-collection-english-d/DAVE THE DIVER - [EU] [EN] [1.23].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/DAVE%20THE%20DIVER%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.23%5D.pkg
+2026-09-24 05:06:30,943 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/DAVE%20THE%20DIVER%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.23%5D.pkg
+2026-09-24 05:07:23,681 - ERROR - Download error for ps4-fpkg-collection-english-d/Dead Island 2 - [EU] [EN] [1.10].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/Dead%20Island%202%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.10%5D.pkg
+2026-09-24 05:07:23,715 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/Dead%20Island%202%20-%20%5BEU%5D%20%5BEN%5D%20%5B1.10%5D.pkg
+2026-09-24 05:08:16,682 - ERROR - Download error for ps4-fpkg-collection-english-d/DEAD RISING - [US] [EN] [1.00].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/DEAD%20RISING%20-%20%5BUS%5D%20%5BEN%5D%20%5B1.00%5D.pkg
+2026-09-24 05:08:16,709 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/DEAD%20RISING%20-%20%5BUS%5D%20%5BEN%5D%20%5B1.00%5D.pkg
+2026-09-24 05:22:04,433 - ERROR - Download error for ps4-fpkg-collection-english-d/Deadpool - [US] [EN] [1.00].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/Deadpool%20-%20%5BUS%5D%20%5BEN%5D%20%5B1.00%5D.pkg
+2026-09-24 05:22:04,467 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/Deadpool%20-%20%5BUS%5D%20%5BEN%5D%20%5B1.00%5D.pkg
+2026-09-24 05:26:18,969 - ERROR - Download error for ps4-fpkg-collection-english-d/Destroy All Humans! - [US] [EN] [1.08].pkg
+Traceback (most recent call last):
+  File "main.py", line 1232, in download_worker
+  File "requests\models.py", line 1167, in raise_for_status
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/Destroy%20All%20Humans%21%20-%20%5BUS%5D%20%5BEN%5D%20%5B1.08%5D.pkg
+2026-09-24 05:26:18,991 - ERROR - Download failed: 500 Server Error: Internal Server Error for url: https://dn721608.ca.archive.org/0/items/ps4-fpkg-collection-english-d/Destroy%20All%20Humans%21%20-%20%5BUS%5D%20%5BEN%5D%20%5B1.08%5D.pkg

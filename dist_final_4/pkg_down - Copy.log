@@ -1,0 +1,4 @@
+2026-09-24 02:00:14,205 - INFO - Application started.
+2026-09-24 02:00:23,348 - INFO - Searching for: ps4 pkg
+2026-09-24 02:00:23,355 - INFO - Fetching search results from: https://archive.org/advancedsearch.php?q=ps4 pkg&output=json&rows=1000&page=1
+2026-09-24 02:00:23,364 - ERROR - Search error: HTTPSConnectionPool(host='archive.org', port=443): Max retries exceeded with url: /advancedsearch.php?q=ps4%20pkg&output=json&rows=1000&page=1 (Caused by NameResolutionError("HTTPSConnection(host='archive.org', port=443): Failed to resolve 'archive.org' ([Errno 11001] getaddrinfo failed)"))

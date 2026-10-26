@@ -1,0 +1,965 @@
+{
+  "schemaVersion": 1,
+  "projectId": "85de1423c60744e3ad213ef6f4ad78ef",
+  "name": "Ps4-Downloader",
+  "nextCardIndex": 19,
+  "latestExePath": "dist_final_10/PKG_D0Wn.exe",
+  "latestReleasePath": "dist_final_7\\PKG_D0Wn.exe",
+  "tagCatalog": [
+    {
+      "name": "bug",
+      "color": "#7A2632"
+    },
+    {
+      "name": "in progress",
+      "color": "#8B7CFF"
+    }
+  ],
+  "customCardTypes": [],
+  "clusters": [],
+  "signatures": [],
+  "appliedOperatorRequestIds": [],
+  "branches": [
+    {
+      "id": "main",
+      "name": "main",
+      "branch": "main",
+      "isArchive": false,
+      "isCollapsed": false,
+      "isSystem": true,
+      "isLocked": false,
+      "tasks": [
+        {
+          "id": "cf34d72285674946829e065855892852",
+          "index": 14,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Enumerate every Archive.org file",
+          "task": "Fix Archive.org search/link retrieval failures reported in dist_final_5/pkg_down.log. Search every result page and list every individual file from every Archive.org item (not merely torrent files), with robust request, pagination, URL encoding, error reporting, and cancellation behavior. Preserve the optional extension filter and produce a verified Windows executable.",
+          "tags": [
+            "bug"
+          ],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "b1a3e044e2734f3bb2afd2cbfbd4d56a",
+              "index": 1,
+              "text": "Archive.org requests use encoded parameters, status validation, retries, and useful user-visible errors",
+              "isDone": true
+            },
+            {
+              "id": "af75faf56f6d4ed1b9b5a8a5c237c6bc",
+              "index": 2,
+              "text": "A search automatically traverses all result pages and metadata records and lists every individual file matching the optional extension filter",
+              "isDone": true
+            },
+            {
+              "id": "6b75de06edee4591b73b8b4cc4ee451a",
+              "index": 3,
+              "text": "A new search cancels stale work and UI updates remain safe and responsive",
+              "isDone": true
+            },
+            {
+              "id": "a99bdaf997a84f54b3e4b92d6bf5f23f",
+              "index": 4,
+              "text": "Automated tests cover pagination, complete file enumeration, URL generation, filtering, and failures",
+              "isDone": true
+            },
+            {
+              "id": "25f1e912a0f543ddb06b9a72f9c0b7ef",
+              "index": 5,
+              "text": "A verified Windows executable is built and recorded as the latest release path",
+              "isDone": true
+            }
+          ],
+          "notes": [
+            {
+              "id": "f80215c18bf242e8857ac50ffb6c7da7",
+              "text": "Zen bookkeeping blocker: prompt.txt requires \u0027zen-operator signature add\u0027 before archive, but the installed operator at C:/Users/haptic/AppData/Local/Zen/zen-operator.exe does not implement signatures/signature commands and prints help instead. Task is intentionally left unarchived; zen.tasks.json was not edited directly."
+            },
+            {
+              "id": "008abe5f0e564463a6a326402522491d",
+              "text": "Verification: 10 automated tests, GUI smoke test, packaged EXE startup, and live Archive.org search\u002Bmetadata passed. With Windows DNS returning WinSock 11001, the secure DNS-over-HTTPS fallback reached Archive.org, found 5,572 items for \u0027ps4 png\u0027, and retrieved all 7 metadata files for the first item. dist_final_6/PKG_D0Wn.exe is the recorded latest release artifact."
+            }
+          ],
+          "flags": {
+            "commit": false,
+            "build": true,
+            "release": false,
+            "merge": false
+          },
+          "isDone": false,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T07:06:42.078424+00:00",
+          "updatedAt": "2026-09-24T07:32:23.6411311+00:00"
+        },
+        {
+          "id": "30be3f761640457fb57c2232521985f2",
+          "index": 17,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Persistent settings and flat download paths",
+          "task": "Persist search text, file-type filter, result sort column/direction, and download directory across runs in a stable per-user settings file. Fall back to the Windows Downloads folder when the saved destination is unavailable. Download every selected file directly into the chosen folder without Archive.org item/page subdirectories, and fix already-downloaded detection to use that flat destination and exact expected file size. Verify the behavior and create a new executable folder without overwriting or stopping the current executable.",
+          "tags": [
+            "bug"
+          ],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "b3282f1b57934fbab5f11f0aec33e5c9",
+              "index": 1,
+              "text": "Settings persist search text, extension filter, sort column/direction, download directory, and search history across build folders",
+              "isDone": true
+            },
+            {
+              "id": "f6af5172fdfa47fdbe447eb6a507d029",
+              "index": 2,
+              "text": "An unavailable saved download directory falls back safely to the user Downloads folder",
+              "isDone": true
+            },
+            {
+              "id": "588124034e894d64837fec8e2676db37",
+              "index": 3,
+              "text": "Download destinations use a safe basename directly inside the selected folder with no Archive.org identifier or source subfolders",
+              "isDone": true
+            },
+            {
+              "id": "9a16c347f5eb4d8092e02d6b7173bed7",
+              "index": 4,
+              "text": "Already-downloaded detection checks the flat destination, distinguishes complete and incomplete files by expected size, refreshes correctly, and skips complete files",
+              "isDone": true
+            },
+            {
+              "id": "d20c5dbf09154b679e268568020a57f3",
+              "index": 5,
+              "text": "Automated and GUI smoke tests cover settings, fallback, flat paths, and complete-file detection",
+              "isDone": true
+            },
+            {
+              "id": "f2749aadcc98417195aa6eb81e664fa1",
+              "index": 6,
+              "text": "A verified Windows executable is built in a new dist folder and recorded as latestExePath without touching older running builds",
+              "isDone": true
+            }
+          ],
+          "notes": [
+            {
+              "id": "57a4e0fb70324a9087a7ea5d4a87dc82",
+              "text": "Implemented stable per-user settings at C:\\Users\\haptic\\AppData\\Local/PKG_D0Wn/settings.json for search text, extension filter, download directory, sort column/direction, and history; unavailable locations fall back to Downloads. Flattened every Archive path to a sanitized basename directly in the chosen folder, with exact-size complete/incomplete detection and complete-file queue skipping. Verified 24 unit tests, a clean two-process GUI restart smoke test, and isolated packaged startup/settings creation. Built dist_final_9/PKG_D0Wn.exe, SHA-256 C4F8ED6232EF0E8064F6802103A61E747953CA95CD556CC460D74239B8F843DF, without touching older builds."
+            },
+            {
+              "id": "c871085d0bc44d6bbfddcc7de03fc8b0",
+              "text": "Workflow blocker: all requirements are complete, but the installed legacy zen-operator does not implement the mandatory signature add command and prints help instead. The task is intentionally left unarchived until Zen updates the operator; zen.tasks.json was not edited directly."
+            }
+          ],
+          "flags": {
+            "commit": false,
+            "build": true,
+            "release": false,
+            "merge": false
+          },
+          "isDone": false,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T09:35:25.6842718+00:00",
+          "updatedAt": "2026-09-24T10:27:48.8866485+00:00"
+        },
+        {
+          "id": "281e35be809f457e8b2ea117bd185b7b",
+          "index": 15,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Sortable selectable results with Sink scrolling",
+          "task": "Add bidirectional header sorting to the Archive.org file table, toggle each row selected/deselected on ordinary clicks, and reproduce Sink\u0027s middle-mouse drag scrolling including its 1.6x movement, 150px edge zones, 14px/30ms edge auto-scroll, both axes, capture cursor, and slim scrollbar treatment. Preserve selections through sorting and build a verified Windows executable.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "eb87b2c926864976aee05c1910fc150f",
+              "index": 1,
+              "text": "Clicking any result header sorts by that column, clicking it again reverses direction, numeric size/date sorting is correct, and the active direction is visible",
+              "isDone": true
+            },
+            {
+              "id": "57e1fb3b9e284ffcb83a44c279569a87",
+              "index": 2,
+              "text": "Ordinary row clicks independently toggle selection and deselection without requiring modifier keys, and selections survive sorting",
+              "isDone": true
+            },
+            {
+              "id": "aaa08dc6f23b4c36a87729de305f2166",
+              "index": 3,
+              "text": "The results table reproduces Sink\u0027s middle-button drag scrolling, edge auto-scroll constants, two-axis behavior, capture/release behavior, and slim scrollbar styling",
+              "isDone": true
+            },
+            {
+              "id": "ee8a34fa56b04b2584e69a89bc61dce8",
+              "index": 4,
+              "text": "Automated and GUI smoke tests verify sort order, selection toggling, and scrolling state behavior",
+              "isDone": true
+            },
+            {
+              "id": "04e2de5b2af444ccb16f4e07902f88ff",
+              "index": 5,
+              "text": "A verified Windows executable is built and recorded as the latest release path",
+              "isDone": true
+            }
+          ],
+          "notes": [
+            {
+              "id": "e33b809a64f94e7ca0cab1eddaa5a6c7",
+              "text": "Verification: 14 automated tests passed; real-widget smoke tests passed for registered header commands, ascending/descending numeric size order, visible arrows, row hit-test toggle selection/deselection, selection persistence, wheel movement, middle-button capture/cursor, edge timer/direction, and release. dist_final_7/PKG_D0Wn.exe remained responsive and SHA-256 is 352088CB19241FCC6E891BAAC068C53BC4A9B4F4EB7CC6D49EF9E77308C1192C."
+            },
+            {
+              "id": "86c7a1b2339441cdb3cb5b5b25628b51",
+              "text": "Zen bookkeeping blocker: prompt.txt requires \u0027zen-operator signature add\u0027 before archive, but the installed operator does not implement signature commands. Task is intentionally left unarchived and zen.tasks.json was not edited directly."
+            }
+          ],
+          "flags": {
+            "commit": false,
+            "build": true,
+            "release": false,
+            "merge": false
+          },
+          "isDone": false,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T07:49:42.8153721+00:00",
+          "updatedAt": "2026-09-24T07:55:21.246451+00:00"
+        },
+        {
+          "id": "d44a112d396e48db839214234a4c0c7b",
+          "index": 16,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Download stopping, storage preview, and ETAs",
+          "task": "Add a Stop Downloads control that safely cancels the active partial transfer and clears queued downloads; show the combined size of selected results and free space on the volume containing the selected download folder; show separate ETA values for the current file and all queued files. Preserve completed files, clean only app-owned partial files, verify behavior, and create a fresh executable in a new dist folder without touching the running older build.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "db760847e45a4b308393d36074c11420",
+              "index": 1,
+              "text": "Stop Downloads cancels the active transfer, clears queued transfers, cleans app-owned .part files, updates row states and counters, and permits new downloads afterward",
+              "isDone": true
+            },
+            {
+              "id": "8a2609812ef245858b8de184d21700cd",
+              "index": 2,
+              "text": "Selection UI previews total known bytes, unknown-size count, free space, and remaining space on the volume containing the selected download folder",
+              "isDone": true
+            },
+            {
+              "id": "8f4c7236ec664a76a3c60608394f14f0",
+              "index": 3,
+              "text": "The status bar displays separately updated current-file ETA and all-queued-files ETA, handling unknown sizes and idle states honestly",
+              "isDone": true
+            },
+            {
+              "id": "5ef673b0809048eca85104d66ad0fa4f",
+              "index": 4,
+              "text": "Automated and GUI smoke tests verify cancellation state, storage calculations, ETA calculations, and UI controls",
+              "isDone": true
+            },
+            {
+              "id": "f2df30c0f39a4b10b33be65064797559",
+              "index": 5,
+              "text": "A verified Windows executable is built in a new folder and recorded as the latest release path without stopping older running builds",
+              "isDone": true
+            }
+          ],
+          "notes": [
+            {
+              "id": "624ebf992c724f0b962cd944b4f57cd2",
+              "text": "Implemented stoppable downloads with queued cancellation and .part cleanup; exact-size complete/incomplete/unverified row indicators; pending selection size, unknown count, free volume space, and post-download free-space preview; separate current and total ETAs. Verified 20 unit tests plus hidden GUI smoke. Built and startup-verified dist_final_8/PKG_D0Wn.exe (SHA-256 56590F9E8F2BE6B79EE6E56FF3D36AD62696DD414FF2CE60D691DE1A89B083E8) without touching older running builds."
+            },
+            {
+              "id": "9feaacdb35df48cda3c42ac9971b8314",
+              "text": "Workflow blocker: the installed zen-operator does not implement the required signatures or signature add commands (it prints legacy help). The task is fully implemented, built, and verified, but it is intentionally left unarchived until the operator is upgraded so the mandatory project signature can be recorded."
+            }
+          ],
+          "flags": {
+            "commit": false,
+            "build": true,
+            "release": false,
+            "merge": false
+          },
+          "isDone": false,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T08:12:32.2154504+00:00",
+          "updatedAt": "2026-09-24T09:24:31.7140079+00:00"
+        },
+        {
+          "id": "5ec59490e407447fa8417e922ac01ac2",
+          "index": 18,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Live filename filtering and hide downloaded",
+          "task": "Add a real-time filename filter that updates the visible result list on every text change and matches only the individual file basename, case-insensitively. Add a Hide Downloaded toggle that removes verified-complete files while retaining Ready and Incomplete files. Make both filters compose correctly with sorting, selection, status refreshes, download completion, folder changes, and repeated Archive searches. Persist the filter controls with the existing settings and build a verified executable in a new folder without overwriting or stopping the current build.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "01ef67a24f284ab598225dfda9587d73",
+              "index": 1,
+              "text": "Typing or deleting each character updates the table immediately using a case-insensitive substring match against only the individual file basename",
+              "isDone": true
+            },
+            {
+              "id": "3b821f1c05044661a72bb5e1cf560c73",
+              "index": 2,
+              "text": "Hide Downloaded excludes exact-size complete and unverified-existing files while keeping Ready and Incomplete files visible, and reacts to status or folder changes",
+              "isDone": true
+            },
+            {
+              "id": "bf378387a2c444c7a91400b390e21573",
+              "index": 3,
+              "text": "Combined filters preserve correct sorting, visible/total counts, safe visible selection behavior, and clean repeated searches without detached-row collisions",
+              "isDone": true
+            },
+            {
+              "id": "d14a49d4370849f19ea90f8e11d43580",
+              "index": 4,
+              "text": "Filename filter text and Hide Downloaded state persist with the existing per-user settings",
+              "isDone": true
+            },
+            {
+              "id": "2743ebc91203441da999ad06d548bc5e",
+              "index": 5,
+              "text": "Automated and GUI smoke tests verify live filtering, toggle behavior, combined filters, status transitions, sorting, and saved state",
+              "isDone": true
+            },
+            {
+              "id": "c6d9dcb8b78248d394c8caaa73912234",
+              "index": 6,
+              "text": "A verified Windows executable is built in a new dist folder and recorded as latestExePath without touching older running builds",
+              "isDone": true
+            }
+          ],
+          "notes": [
+            {
+              "id": "f6803ceec3714135a60558ed09b25385",
+              "text": "Implemented a persisted real-time, case-insensitive basename filter and persisted Hide Downloaded toggle. Filtering uses detachable rows to preserve the full result set, clears hidden selection, reports visible/total counts, preserves sorting, reacts to completion/deletion/folder refresh, keeps incomplete and Ready files visible, and safely clears detached rows between searches. Verified 26 unit tests, GUI filtering/restart smoke, and isolated packaged startup. Built dist_final_10/PKG_D0Wn.exe, SHA-256 5E6805EA1CD66375CB6015C1F28301E140108992D074BBC67800A9AF33D2E4D8, without touching older builds."
+            },
+            {
+              "id": "d3cc2b584759477b98f9e1fdbf3a3d80",
+              "text": "Workflow blocker: every requirement is complete, but the installed legacy zen-operator still does not implement the mandatory signature add command and prints help instead. The task is intentionally left unarchived until the operator is updated; zen.tasks.json was not edited directly."
+            }
+          ],
+          "flags": {
+            "commit": false,
+            "build": true,
+            "release": false,
+            "merge": false
+          },
+          "isDone": false,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T10:53:28.9203054+00:00",
+          "updatedAt": "2026-09-24T11:01:31.4068023+00:00"
+        }
+      ]
+    },
+    {
+      "id": "archive",
+      "name": "Archived",
+      "branch": null,
+      "isArchive": true,
+      "isCollapsed": false,
+      "isSystem": true,
+      "isLocked": false,
+      "tasks": [
+        {
+          "id": "0909ca118413488d9c17ed6b45613393",
+          "index": 1,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Project Setup",
+          "task": "Initialize Python environment, requirements, and basic structure",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "dfe74d88a22d4efc80a58ef600e8125c",
+              "index": 1,
+              "text": "Create requirements.txt",
+              "isDone": true
+            },
+            {
+              "id": "4e8a2f91ecc54fdc9c31bc8b59033573",
+              "index": 2,
+              "text": "Create main.py skeleton",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": false,
+            "release": false,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:08:49.7311679+00:00",
+          "updatedAt": "2026-09-24T06:10:39.8073693+00:00"
+        },
+        {
+          "id": "82faf7fa30934fd5b9be2947ac6893fa",
+          "index": 2,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "UI Base \u0026 Search Memory",
+          "task": "Create CustomTkinter UI with search box, directory browser, and search history saving/recalling.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "cd1730efda8a42e3a5031096e80831f5",
+              "index": 1,
+              "text": "Search box and Browse button",
+              "isDone": true
+            },
+            {
+              "id": "8043f089ab3649e5b936af8b6c8ec032",
+              "index": 2,
+              "text": "Save and recall searches",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": false,
+            "release": false,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:09:25.9632229+00:00",
+          "updatedAt": "2026-09-24T06:11:06.6064139+00:00"
+        },
+        {
+          "id": "efe123535dbf43a290ad5c3d4e153322",
+          "index": 3,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Archive.org API Integration",
+          "task": "Non-blocking search and indexing of archive.org files",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "7030b11eb8da4058b4759ea9f9071244",
+              "index": 1,
+              "text": "Search query to archive.org API",
+              "isDone": true
+            },
+            {
+              "id": "8e7b721d45e0474bbd94ba7a59d5edd4",
+              "index": 2,
+              "text": "Fetch file list for items",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": false,
+            "release": false,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:09:27.3201492+00:00",
+          "updatedAt": "2026-09-24T06:11:34.5000555+00:00"
+        },
+        {
+          "id": "022643517b5d4b43be97650f057595a4",
+          "index": 4,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Download Manager",
+          "task": "Download files with progress tracking, check if exists, delete existing.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "586234bf2b074c3d91170e43f977c362",
+              "index": 1,
+              "text": "Download with progress",
+              "isDone": true
+            },
+            {
+              "id": "45e64397eda94348a258ee449a671170",
+              "index": 2,
+              "text": "Check if exists \u0026 Delete functionality",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": false,
+            "release": false,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:09:28.2201693+00:00",
+          "updatedAt": "2026-09-24T06:16:38.9932942+00:00"
+        },
+        {
+          "id": "b6cf018ada1144cb975c327df8569f90",
+          "index": 5,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "UI Integration \u0026 Build Release",
+          "task": "Wire up the UI list items, progress bars, and build the .exe using PyInstaller.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "5849b65fe63d4af3a2b7429f9c42feac",
+              "index": 1,
+              "text": "Populate scrollable list with files",
+              "isDone": true
+            },
+            {
+              "id": "43fddf7ba1eb4f12ad1b7ad7c9db8515",
+              "index": 2,
+              "text": "Update progress bars in real time",
+              "isDone": true
+            },
+            {
+              "id": "f77ca2ed59c847d8823c67cdd67dbd2b",
+              "index": 3,
+              "text": "Build with PyInstaller",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": true,
+            "release": true,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:09:29.0396325+00:00",
+          "updatedAt": "2026-09-24T06:21:13.9189209+00:00"
+        },
+        {
+          "id": "5219245012a24b3c9043e12d84836ab6",
+          "index": 6,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Advanced UI, Filtering, and Download Queue",
+          "task": "Add extension filtering, UI styling, download queuing (1 at a time), and a bottom status bar showing speed, current file, queued files, and queued space.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "87a2564819aa44e08aa1f746f6208e2c",
+              "index": 1,
+              "text": "Add extension filter text box",
+              "isDone": true
+            },
+            {
+              "id": "3df7817e8f6146e9bf508e600d92e00d",
+              "index": 2,
+              "text": "Filter results by extension",
+              "isDone": true
+            },
+            {
+              "id": "187a983dde7d48c8acbb3250a133f130",
+              "index": 3,
+              "text": "Style filename, extension, and metadata",
+              "isDone": true
+            },
+            {
+              "id": "3dedcaf72f9f4126965d05e504a1919f",
+              "index": 4,
+              "text": "Implement Download Queue (1 at a time)",
+              "isDone": true
+            },
+            {
+              "id": "ab8db26af35743deaa160fff6e3c0544",
+              "index": 5,
+              "text": "Add bottom status bar (current file, speed, queued files/space)",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": true,
+            "release": true,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:24:32.7560518+00:00",
+          "updatedAt": "2026-09-24T06:32:39.4852581+00:00"
+        },
+        {
+          "id": "8f9f1da8cdbc496a875a9c1c344a47f8",
+          "index": 7,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Increase search results limit",
+          "task": "Increase the number of rows fetched from the archive.org search API from 5 to 100 to yield more items and files.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "f4899fd72a564ac293fa187cf47f2384",
+              "index": 1,
+              "text": "Change rows from 5 to 100 in API call",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": true,
+            "release": true,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:36:05.1162407+00:00",
+          "updatedAt": "2026-09-24T06:41:38.5734614+00:00"
+        },
+        {
+          "id": "34d2077b96ac4f008ccb1d00bedb51f0",
+          "index": 8,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Fix download URL format",
+          "task": "Change the download URL logic to use the standard archive.org/download/identifier/filename format instead of trying to hit the node servers directly.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "b177859ae41340da9d7c5bc3e826b5e1",
+              "index": 1,
+              "text": "Update download_url in main.py",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": true,
+            "release": true,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:41:56.5054496+00:00",
+          "updatedAt": "2026-09-24T06:43:38.1928619+00:00"
+        },
+        {
+          "id": "54d66afef5d9454887d23f1190437cbf",
+          "index": 9,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Add Pagination",
+          "task": "Add a next page button when 1000 items are loaded to fetch the next 1000 results.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "ec0a110f5d7244979c09308f8f6b212b",
+              "index": 1,
+              "text": "Implement pagination state",
+              "isDone": true
+            },
+            {
+              "id": "01a4816240a144f392757ac6662e52f4",
+              "index": 2,
+              "text": "Add Next Page button",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": true,
+            "release": true,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:43:53.1765697+00:00",
+          "updatedAt": "2026-09-24T06:46:05.8821923+00:00"
+        },
+        {
+          "id": "501788bb5c1942b3a10dd273cc3fc72c",
+          "index": 10,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Speed up search with threading",
+          "task": "Parallelize the archive.org metadata fetching using ThreadPoolExecutor to prevent the UI from taking minutes to populate large results.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "7279950abb41495989a59adb72c38d7e",
+              "index": 1,
+              "text": "Use ThreadPoolExecutor for metadata fetching",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": true,
+            "release": true,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:46:22.2049819+00:00",
+          "updatedAt": "2026-09-24T06:48:21.091186+00:00"
+        },
+        {
+          "id": "c2721119e68945c68f69bf375b3a6a61",
+          "index": 11,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Fix 0 results bug",
+          "task": "Decrease ThreadPoolExecutor max_workers to prevent rate limiting and increase timeouts.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "6d3daf8cf44844429a5e7b449b50af7d",
+              "index": 1,
+              "text": "Fix the search silently failing and returning 0 results",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": true,
+            "release": true,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:54:44.6237673+00:00",
+          "updatedAt": "2026-09-24T06:56:22.8311901+00:00"
+        },
+        {
+          "id": "0b26a7546d3f4eab91f2c7a2555ccb87",
+          "index": 12,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Add application logging",
+          "task": "Implement Python logging module to write application states, search progress, and errors to a log file for debugging.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "9f204085829b4ad4a9807c432181b00f",
+              "index": 1,
+              "text": "Initialize logging to pkg_down.log",
+              "isDone": true
+            },
+            {
+              "id": "a46a6c09c29a484da44ece2684fb4bee",
+              "index": 2,
+              "text": "Log search and download events",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": true,
+            "release": true,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:56:37.9949019+00:00",
+          "updatedAt": "2026-09-24T06:58:06.3134258+00:00"
+        },
+        {
+          "id": "b2571401b89e4484b378acefc0885484",
+          "index": 13,
+          "kind": "task",
+          "dueDate": null,
+          "startedDate": null,
+          "priority": null,
+          "title": "Add elapsed time to logs",
+          "task": "Add precise elapsed time logging for metadata fetching to easily debug slow archive.org links.",
+          "tags": [],
+          "files": [],
+          "blockedByTaskIds": [],
+          "clusterId": null,
+          "customTypeId": null,
+          "customValues": {},
+          "requirements": [
+            {
+              "id": "46dd551b294741259196b43366f72c07",
+              "index": 1,
+              "text": "Log elapsed time for fetch_metadata",
+              "isDone": true
+            }
+          ],
+          "notes": [],
+          "flags": {
+            "commit": true,
+            "build": true,
+            "release": true,
+            "merge": false
+          },
+          "isDone": true,
+          "isLocked": false,
+          "isAwaitingFeedback": false,
+          "isCollapsed": false,
+          "createdAt": "2026-09-24T06:59:57.2760369+00:00",
+          "updatedAt": "2026-09-24T07:02:15.1128388+00:00"
+        }
+      ]
+    }
+  ]
+}

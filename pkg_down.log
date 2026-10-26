@@ -1,0 +1,38 @@
+2026-09-24 02:17:35,452 - INFO - Application started.
+2026-09-24 02:18:14,524 - INFO - Application started.
+2026-09-24 02:52:16,147 - INFO - Application started.
+2026-09-24 02:52:16,156 - WARNING - System DNS could not resolve archive.org; using secure DNS-over-HTTPS fallback for subsequent requests.
+2026-09-24 02:52:16,159 - ERROR - Metadata error for bad: Archive.org request failed while fetching metadata for bad: HTTP 503
+2026-09-24 02:52:16,161 - WARNING - Archive.org rejected cursor pagination (cursorMark is unsupported); falling back to numbered pages.
+2026-09-24 02:52:44,302 - INFO - Application started.
+2026-09-24 02:53:01,188 - INFO - Application started.
+2026-09-24 02:53:17,088 - INFO - Application started.
+2026-09-24 02:55:08,141 - INFO - Application started.
+2026-09-24 04:18:32,586 - INFO - Application started.
+2026-09-24 04:18:32,595 - WARNING - System DNS could not resolve archive.org; using secure DNS-over-HTTPS fallback for subsequent requests.
+2026-09-24 04:18:32,598 - ERROR - Metadata error for bad: Archive.org request failed while fetching metadata for bad: HTTP 503
+2026-09-24 04:18:32,600 - WARNING - Archive.org rejected cursor pagination (cursorMark is unsupported); falling back to numbered pages.
+2026-09-24 04:19:29,225 - INFO - Application started.
+2026-09-24 04:20:02,980 - INFO - Application started.
+2026-09-24 04:20:02,985 - WARNING - System DNS could not resolve archive.org; using secure DNS-over-HTTPS fallback for subsequent requests.
+2026-09-24 04:20:02,989 - ERROR - Metadata error for bad: Archive.org request failed while fetching metadata for bad: HTTP 503
+2026-09-24 04:20:02,991 - WARNING - Archive.org rejected cursor pagination (cursorMark is unsupported); falling back to numbered pages.
+2026-09-24 04:23:09,963 - INFO - Application started.
+2026-09-24 04:23:09,969 - WARNING - System DNS could not resolve archive.org; using secure DNS-over-HTTPS fallback for subsequent requests.
+2026-09-24 04:23:09,972 - ERROR - Metadata error for bad: Archive.org request failed while fetching metadata for bad: HTTP 503
+2026-09-24 04:23:09,974 - WARNING - Archive.org rejected cursor pagination (cursorMark is unsupported); falling back to numbered pages.
+2026-09-24 04:23:10,758 - INFO - Application started.
+2026-09-24 05:22:18,485 - INFO - Application started.
+2026-09-24 05:22:18,491 - WARNING - System DNS could not resolve archive.org; using secure DNS-over-HTTPS fallback for subsequent requests.
+2026-09-24 05:22:18,494 - ERROR - Metadata error for bad: Archive.org request failed while fetching metadata for bad: HTTP 503
+2026-09-24 05:22:18,495 - WARNING - Archive.org rejected cursor pagination (cursorMark is unsupported); falling back to numbered pages.
+2026-09-24 05:22:19,179 - INFO - Application started.
+2026-09-24 05:22:37,806 - INFO - Application started.
+2026-09-24 05:23:06,606 - INFO - Application started.
+2026-09-24 05:23:07,551 - INFO - Application started.
+2026-09-24 05:59:07,972 - INFO - Application started.
+2026-09-24 05:59:07,977 - WARNING - System DNS could not resolve archive.org; using secure DNS-over-HTTPS fallback for subsequent requests.
+2026-09-24 05:59:07,979 - ERROR - Metadata error for bad: Archive.org request failed while fetching metadata for bad: HTTP 503
+2026-09-24 05:59:07,980 - WARNING - Archive.org rejected cursor pagination (cursorMark is unsupported); falling back to numbered pages.
+2026-09-24 05:59:08,674 - INFO - Application started.
+2026-09-24 05:59:09,597 - INFO - Application started.

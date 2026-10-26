@@ -1,0 +1,65 @@
+2026-09-24 02:20:53,112 - INFO - Application started.
+2026-09-24 02:21:46,938 - INFO - Searching for 'ps4 png' with extension filter 'pkg'
+2026-09-24 02:21:46,954 - WARNING - Retrying (Retry(total=4, connect=4, read=5, redirect=None, status=5)) after connection broken by 'NameResolutionError("HTTPSConnection(host='archive.org', port=443): Failed to resolve 'archive.org' ([Errno 11001] getaddrinfo failed)")': /advancedsearch.php?q=ps4+png&fl%5B%5D=identifier&sort%5B%5D=identifier+asc&rows=1000&output=json&cursorMark=%2A
+2026-09-24 02:21:48,556 - WARNING - Retrying (Retry(total=3, connect=3, read=5, redirect=None, status=5)) after connection broken by 'NameResolutionError("HTTPSConnection(host='archive.org', port=443): Failed to resolve 'archive.org' ([Errno 11001] getaddrinfo failed)")': /advancedsearch.php?q=ps4+png&fl%5B%5D=identifier&sort%5B%5D=identifier+asc&rows=1000&output=json&cursorMark=%2A
+2026-09-24 02:21:51,774 - WARNING - Retrying (Retry(total=2, connect=2, read=5, redirect=None, status=5)) after connection broken by 'NameResolutionError("HTTPSConnection(host='archive.org', port=443): Failed to resolve 'archive.org' ([Errno 11001] getaddrinfo failed)")': /advancedsearch.php?q=ps4+png&fl%5B%5D=identifier&sort%5B%5D=identifier+asc&rows=1000&output=json&cursorMark=%2A
+2026-09-24 02:22:09,345 - WARNING - Retrying (Retry(total=1, connect=1, read=5, redirect=None, status=5)) after connection broken by 'NameResolutionError("HTTPSConnection(host='archive.org', port=443): Failed to resolve 'archive.org' ([Errno 11001] getaddrinfo failed)")': /advancedsearch.php?q=ps4+png&fl%5B%5D=identifier&sort%5B%5D=identifier+asc&rows=1000&output=json&cursorMark=%2A
+2026-09-24 02:22:33,319 - WARNING - Retrying (Retry(total=0, connect=0, read=5, redirect=None, status=5)) after connection broken by 'NameResolutionError("HTTPSConnection(host='archive.org', port=443): Failed to resolve 'archive.org' ([Errno 11001] getaddrinfo failed)")': /advancedsearch.php?q=ps4+png&fl%5B%5D=identifier&sort%5B%5D=identifier+asc&rows=1000&output=json&cursorMark=%2A
+2026-09-24 02:22:33,321 - ERROR - Search failed
+Traceback (most recent call last):
+  File "urllib3\connection.py", line 204, in _new_conn
+  File "urllib3\util\connection.py", line 60, in create_connection
+  File "socket.py", line 987, in getaddrinfo
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "urllib3\connectionpool.py", line 788, in urlopen
+  File "urllib3\connectionpool.py", line 488, in _make_request
+  File "urllib3\connectionpool.py", line 464, in _make_request
+  File "urllib3\connectionpool.py", line 1106, in _validate_conn
+  File "urllib3\connection.py", line 759, in connect
+  File "urllib3\connection.py", line 211, in _new_conn
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='archive.org', port=443): Failed to resolve 'archive.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "requests\adapters.py", line 696, in send
+  File "urllib3\connectionpool.py", line 872, in urlopen
+  File "urllib3\connectionpool.py", line 872, in urlopen
+  File "urllib3\connectionpool.py", line 872, in urlopen
+  [Previous line repeated 2 more times]
+  File "urllib3\connectionpool.py", line 842, in urlopen
+  File "urllib3\util\retry.py", line 543, in increment
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='archive.org', port=443): Max retries exceeded with url: /advancedsearch.php?q=ps4+png&fl%5B%5D=identifier&sort%5B%5D=identifier+asc&rows=1000&output=json&cursorMark=%2A (Caused by NameResolutionError("HTTPSConnection(host='archive.org', port=443): Failed to resolve 'archive.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "archive_org.py", line 146, in _get_json
+  File "requests\sessions.py", line 671, in get
+  File "requests\sessions.py", line 651, in request
+  File "requests\sessions.py", line 784, in send
+  File "requests\adapters.py", line 729, in send
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='archive.org', port=443): Max retries exceeded with url: /advancedsearch.php?q=ps4+png&fl%5B%5D=identifier&sort%5B%5D=identifier+asc&rows=1000&output=json&cursorMark=%2A (Caused by NameResolutionError("HTTPSConnection(host='archive.org', port=443): Failed to resolve 'archive.org' ([Errno 11001] getaddrinfo failed)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "main.py", line 418, in perform_search
+  File "archive_org.py", line 289, in iter_files
+  File "archive_org.py", line 193, in _search_page
+  File "archive_org.py", line 150, in _get_json
+archive_org.ArchiveSearchError: Could not connect to Archive.org while fetching search page 1. Check the internet connection, DNS, firewall, or VPN and try again.
+2026-09-24 02:32:01,201 - INFO - Application started.
+2026-09-24 02:34:32,488 - INFO - Application started.
+2026-09-24 02:42:39,169 - INFO - Application started.
+2026-09-24 02:42:46,441 - INFO - Searching for 'ps4 pkg' with extension filter 'pkg'
+2026-09-24 02:42:47,452 - WARNING - Archive.org rejected cursor pagination ([UNSUPPORTED_VALUE] A requested parameter has an inappropriate value * for request parameter cursorMark); falling back to numbered pages.
+2026-09-24 02:43:39,026 - INFO - Application started.
+2026-09-24 02:43:55,278 - INFO - Searching for 'ps4 pkg' with extension filter 'pkg'
+2026-09-24 02:43:57,438 - WARNING - Archive.org rejected cursor pagination ([UNSUPPORTED_VALUE] A requested parameter has an inappropriate value * for request parameter cursorMark); falling back to numbered pages.
+2026-09-24 02:45:11,885 - INFO - Searching for 'ps4 fpkg' with extension filter 'pkg'
+2026-09-24 02:45:19,419 - WARNING - Archive.org rejected cursor pagination ([UNSUPPORTED_VALUE] A requested parameter has an inappropriate value * for request parameter cursorMark); falling back to numbered pages.

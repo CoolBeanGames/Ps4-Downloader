@@ -1,0 +1,11 @@
+2026-09-24 02:54:40,400 - INFO - Application started.
+2026-09-24 03:00:53,320 - INFO - Application started.
+2026-09-24 03:01:07,533 - INFO - Searching for 'ps4 fpkg' with extension filter 'pkg'
+2026-09-24 03:01:08,074 - WARNING - Archive.org rejected cursor pagination ([UNSUPPORTED_VALUE] A requested parameter has an inappropriate value * for request parameter cursorMark); falling back to numbered pages.
+2026-09-24 03:01:44,348 - INFO - Searching for 'ps4 fpkg collection' with extension filter 'pkg'
+2026-09-24 03:01:53,064 - WARNING - Archive.org rejected cursor pagination ([UNSUPPORTED_VALUE] A requested parameter has an inappropriate value * for request parameter cursorMark); falling back to numbered pages.
+2026-09-24 03:02:29,163 - INFO - Complete — 965 individual files from 35 Archive.org items across 1 search pages.
+2026-09-24 03:05:55,560 - INFO - Application started.
+2026-09-24 03:06:08,504 - INFO - Searching for 'ps4 fpkg collection' with extension filter 'pkg'
+2026-09-24 03:06:09,088 - WARNING - Archive.org rejected cursor pagination ([UNSUPPORTED_VALUE] A requested parameter has an inappropriate value * for request parameter cursorMark); falling back to numbered pages.
+2026-09-24 03:06:35,183 - INFO - Complete — 965 individual files from 35 Archive.org items across 1 search pages.
